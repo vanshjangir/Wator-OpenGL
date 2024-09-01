@@ -78,19 +78,27 @@ Creature * new_fish(planer_c coords){
 }
 
 
-vector * gen_fish(int number){
-  vector * generated_fishes = new_vec(number);
+vector * gen_fish(Creature ***sea, int number){
+  //vector * generated_fishes = new_vec(number);
   for (int i=0; i<number; i++) {
-    int x = rand() % COLUMNS;
-    int y = rand() % ROWS;
-    planer_c c;
-    c.x = x;c.y = y;
-    Creature * new_fis = new_fish(c);
-    vec_add(generated_fishes, *new_fis);
+    int x = rand() % SIZE;
+    int y = rand() % SIZE;
+    if(sea[0][x][y].kin != Water){
+      i--;
+      continue;
+    }
 
+    sea[0][x][y].kin = Fish;
+    sea[0][x][y].energy = 0;
+    sea[0][x][y].breeding_time = 0;
+
+    //planer_c c;
+    //c.x = x;c.y = y;
+    //Creature * new_shark = newShark(c);
+    //vec_add(generated_sharks, *new_shark);
   }
 
-  return generated_fishes;
+  return NULL;
 
 }
 

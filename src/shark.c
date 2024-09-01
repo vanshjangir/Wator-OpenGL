@@ -123,17 +123,26 @@ Creature * newShark(planer_c coords){
 }
 
 
-vector * gen_sharks(unsigned long number){
-  vector * generated_sharks = new_vec(256);
+vector * gen_sharks(Creature ***sea, unsigned long number){
+  //vector * generated_sharks = new_vec(256);
   for (int i=0; i<number; i++) {
-    int x = rand() % COLUMNS;
-    int y = rand() % ROWS;
-    planer_c c;
-    c.x = x;c.y = y;
-    Creature * new_shark = newShark(c);
-    vec_add(generated_sharks, *new_shark);
+    int x = rand() % SIZE;
+    int y = rand() % SIZE;
+    if(sea[0][x][y].kin != Water){
+      i--;
+      continue;
+    }
+
+    sea[0][x][y].kin = Shark;
+    sea[0][x][y].energy = ENERGY_S;
+    sea[0][x][y].breeding_time = 0;
+
+    //planer_c c;
+    //c.x = x;c.y = y;
+    //Creature * new_shark = newShark(c);
+    //vec_add(generated_sharks, *new_shark);
   }
-  return generated_sharks;
+  return NULL;
 
 }
 

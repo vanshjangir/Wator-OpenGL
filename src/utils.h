@@ -9,6 +9,7 @@
 
 #define COLUMNS 80
 #define ROWS 80
+#define SIZE 80
 
 typedef struct PlanerCoordinates{
   int x;
@@ -17,7 +18,9 @@ typedef struct PlanerCoordinates{
 
 typedef enum kind{
   Fish,
-  Shark
+  Shark,
+  Water,
+  Blocked
 }kind;
 
 typedef struct Creature{
