@@ -62,4 +62,8 @@ bool is_free_for_shark(planer_c c,vector * sharks);
 
 void wrapCoordinates(planer_c *point);
 
+void block(int x, int y);
+
+void copy(Creature *** sea, int i, int j, int x, int y);
+
 #endif // !UTILS_H_
